@@ -10,3 +10,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+
+.movie-cards {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    width: 80%;
+    margin: 20px;
+    display: flex;
+  }
+}
