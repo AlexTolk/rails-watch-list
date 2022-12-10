@@ -1,0 +1,29 @@
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Movierate</a>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm mt-10">
+      <div class="card">
+       <%= link_to '+List', new_list_path %>
+      </div>
+    </div>
+
+    <% @lists.each do |list| %>
+      <div class="col-sm mt-10">
+        <div class="card">
+          <h2> <%= list.name %> </h2>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>
