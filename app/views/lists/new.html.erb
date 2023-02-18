@@ -1,7 +1,10 @@
 <div class="container">
-  <h1>Add a new movie</h1>
-  <%= simple_form_for [@list] do |f| %>
-    <%= f.input :name %>
-    <%= f.button :submit %>
-  <% end %>
+  <h1 class="text-white" style="margin-bottom: 5rem;">Add a new movie</h1>
+  <div class="container d-flex flex-row" style="margin-bottom: 10rem;">
+    <img src="/images/neon.jpg" alt="" style="margin-right: 5rem; height:20rem; width:18rem">
+    <%= simple_form_for [@list] do |f| %>
+      <%= f.input :name %>
+      <div class="btn btn-danger"><%= f.button :submit %></div>
+    <% end %>
+  </div>
 </div>

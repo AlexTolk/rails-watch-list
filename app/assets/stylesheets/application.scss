@@ -10,3 +10,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/navbar.scss";
+
+h1{
+  padding: 0px;
+  margin: 0px;
+}
+ul{
+  padding: 0px;
+  margin: 0px;
+}

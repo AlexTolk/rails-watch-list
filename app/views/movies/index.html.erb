@@ -1,48 +1,26 @@
-<nav class="navbar bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">Movierate</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm mt-10">
-      <div class="card">
-       <h2>+List</h2>
-      </div>
+<div class="container text-center">
+  <h1 class="text-white text-bold mb-5">Movies on Movierate</h1>
+  <%= link_to new_movie_path(@movies.create) do %>
+    <div class="btn btn-dark">
+      <h1 class="text-white"> + movie </h1>
     </div>
-
-      <div class="col-sm mt-10">
-        <div class="card">
-          <h2>list - name</h2>
-        </div>
-      </div>
-
-    <ul class="col-sm">
-      <h2>Your movies:</h2>
-      <% @movies.each do |movie| %>
-        <%= link_to movie_path(movie.id), action: 'go' do %>
-          <li class="card" style="height: 100px; margin: 10px">
-            <div class="card-body d-flex">
-              <div class="img-thumbnail">
-                <%= image_tag movie.poster_url || 'https://i.pinimg.com/736x/e0/f4/ba/e0f4baaf2bf43934f69db75d4726f9fb.jpg', alt: "Poster", width: 38, height: 64 %>
+  <% end %>
+  <div class="d-flex flex-wrap">
+    <% @movies.each do |movie| %>
+      <%= link_to movie_path(movie.id) do %>
+          <div class="card bg-dark rounded-lg shadow-lg" style="padding: 10px; margin:20px; width: 250px; height: 450px">
+              <div class="card-img-top">
+                <%= image_tag movie.poster_url || 'https://i.pinimg.com/736x/e0/f4/ba/e0f4baaf2bf43934f69db75d4726f9fb.jpg', alt: "Poster", width: 180, height: 250 %>
               </div>
-              <div class="d-flex justify-content-between">
-                <h4 class="ml-20"><%= movie.title %></h4>
-                <p>Rating: <%= movie.rating %></p>
+              <div class="card-body d-flex flex-wrap">
+                <h4 class="card-title text-white"><%= movie.title %></h4>
+                <p class="text-truncate text-white"><%= movie.overview %></p>
+                <div class="card-footer text-white" style="padding: 0; height: 30px">
+                  <p>Rating: <%= movie.rating %></p>
+                </div>
               </div>
-            </div>
-          </li>
-        <% end %>
+          </div>
       <% end %>
-
-      <li class="card" style="height: 50px; margin: 10px; padding: 10px">
-        <p class="d-flex justify-content-center"> <%= link_to '+movie',  new_movie_path(@movies.create) %> </p>
-      </li>
-    </ul>
+    <% end %>
   </div>
 </div>

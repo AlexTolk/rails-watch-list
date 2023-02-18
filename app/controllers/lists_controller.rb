@@ -3,6 +3,10 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def show
+    @list = List.find(params[:id])
+  end
+
   def new
     @list = List.new
   end
@@ -10,10 +14,20 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to root_path
+      redirect_to lists_index_url
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_path, status: :see_other
   end
 
   def list_params
