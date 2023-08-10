@@ -1,11 +1,21 @@
+<% @titles = [] %>
+<% @movies.each do |movie| %>
+  <% @titles << movie.title%>
+<% end %>
+
 <div class="container">
   <%= link_to :back  do %>
     <h3 class="btn btn-danger text-white"> << Back </h3>
   <% end %>
   <div class="card text-bg-dark" style >
     <img class="card-img" src="https://www.partnertechcorp.com/wp-content/uploads/2020/03/200305-PTU-Cinemas.jpg" alt="Card image"  style="height: 350px; width:100%">
-    <div class="card-img-overlay">
+    <div class="card-img-overlay d-flex flex-column">
       <h2 class="card-title"><%= @list.name %></h2>
+      <h4 class="card-title">Add movies to your list</h4>
+
+        <%= simple_form_for @movies do |f| %>
+          <%= f.input :movies, collection: @titles, as: :grouped_select, group_method: :create %>
+        <% end %>
     </div>
   </div>
 
